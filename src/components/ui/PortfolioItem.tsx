@@ -59,13 +59,13 @@ const PortfolioItem = ({ title, category, imageUrl, className }: PortfolioItemPr
         <div className="text-center max-w-xs">
           <h3 className="text-xl font-bold mb-2">{title}</h3>
           <p className="text-sm text-muted-foreground mb-4">
-            An impressive project showcasing our expertise in {category.toLowerCase()}, delivering exceptional results for our client.
+            projects showcasing our expertise in {category.toLowerCase()}, delivering exceptional results for our client.
           </p>
           <a 
             href="#" 
             className="inline-flex items-center text-promo-red hover:text-white transition-colors"
           >
-            View Project <ExternalLink className="ml-1 h-4 w-4" />
+            View Projects <ExternalLink className="ml-1 h-4 w-4" />
           </a>
         </div>
       </div>

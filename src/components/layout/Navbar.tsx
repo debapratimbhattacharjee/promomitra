@@ -119,57 +119,66 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="fixed inset-0 bg-promo-black/95 backdrop-blur-md z-40 pt-20">
-          <nav className="container mx-auto px-4 py-5">
-            <ul className="flex flex-col space-y-5">
-              {['Services', 'Portfolio', 'About', 'Blog'].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase()}`}
-                    className="text-xl font-medium text-white/90 hover:text-white transition-colors block py-2"
-                    onClick={closeMenu}
-                  >
-                    {item}
-                  </a>
-                  <div className="h-px bg-white/10 mt-2"></div>
-                </li>
-              ))}
-            </ul>
+  <div className="fixed inset-0 bg-zinc-800 z-40 pt-20">
+    <nav className="container mx-auto px-4 py-5">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl text-white">Menu</h2>
+        {/* Close Button */}
+        <button onClick={closeMenu} className="text-white text-3xl">
+          &times;
+        </button>
+      </div>
+      
+      <ul className="flex flex-col space-y-5">
+        {['Services', 'Portfolio', 'About', 'Blog'].map((item) => (
+          <li key={item}>
+            <a 
+              href={`#${item.toLowerCase()}`}
+              className="text-xl font-medium text-white/90 hover:text-white transition-colors block py-2"
+              onClick={closeMenu}
+            >
+              {item}
+            </a>
+            <div className="h-px bg-white/10 mt-2"></div>
+          </li>
+        ))}
+      </ul>
 
-            {user ? (
-              <div className="mt-8 border-t border-white/10 pt-4">
-                <div className="flex items-center mb-4">
-                  <div className="h-10 w-10 rounded-full bg-promo-red/20 flex items-center justify-center">
-                    <User className="h-5 w-5" />
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium">{profile?.username || user.email?.split('@')[0]}</p>
-                    <p className="text-xs text-muted-foreground">{user.email}</p>
-                  </div>
-                </div>
-                <Button 
-                  className="w-full bg-promo-lightgray/20 hover:bg-promo-lightgray/40 text-white"
-                  onClick={() => {
-                    handleSignOut();
-                    closeMenu();
-                  }}
-                >
-                  Sign Out
-                </Button>
-              </div>
-            ) : (
-              <Button 
-                className="w-full mt-8 bg-promo-red hover:bg-promo-red/90 text-white py-6"
-                onClick={handleAuthButtonClick}
-              >
-                Sign In <ChevronRight className="ml-1 h-4 w-4" />
-              </Button>
-            )}
-          </nav>
+      {user ? (
+        <div className="mt-8 border-t border-white/10 pt-4">
+          <div className="flex items-center mb-4">
+            <div className="h-10 w-10 rounded-full bg-promo-red/20 flex items-center justify-center">
+              <User className="h-5 w-5" />
+            </div>
+            <div className="ml-3">
+              <p className="text-sm font-medium">{profile?.username || user.email?.split('@')[0]}</p>
+              <p className="text-xs text-muted-foreground">{user.email}</p>
+            </div>
+          </div>
+          <Button 
+            className="w-full bg-promo-lightgray/20 hover:bg-promo-lightgray/40 text-white"
+            onClick={() => {
+              handleSignOut();
+              closeMenu();
+            }}
+          >
+            Sign Out
+          </Button>
         </div>
+      ) : (
+        <Button 
+          className="w-full mt-8 bg-promo-red hover:bg-promo-red/90 text-white py-6"
+          onClick={handleAuthButtonClick}
+        >
+          Sign In <ChevronRight className="ml-1 h-4 w-4" />
+        </Button>
       )}
-    </header>
-  );
+    </nav>
+  </div>
+)}
+
+</header>
+);
 };
 
 export default Navbar;
