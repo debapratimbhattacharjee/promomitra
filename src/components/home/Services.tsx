@@ -1,78 +1,88 @@
-
 import React from 'react';
-import { Megaphone, Globe, PenTool, Smartphone, Film, BarChart3 } from 'lucide-react';
+import { Megaphone, Globe, PenTool, Smartphone, Film, BarChart3, Users } from 'lucide-react';
 import ServiceCard from '../ui/ServiceCard';
 
-const Services = () => {
-  const services = [
-    {
-      title: 'Digital Marketing',
-      description: 'Strategic online campaigns that drive traffic, leads and sales.',
-      icon: Megaphone,
-      features: [
-        'SEO & SEM Campaigns',
-        'Social Media Management',
-        'Email Marketing',
-        'PPC Advertising'
-      ]
-    },
-    {
-      title: 'Web Development',
-      description: 'Custom websites and applications that convert visitors into customers.',
-      icon: Globe,
-      features: [
-        'Responsive Web Design',
-        'E-commerce Solutions',
-        'CMS Development',
-        'Web Applications'
-      ]
-    },
-    {
-      title: 'Graphic Design',
-      description: 'Visually stunning designs that communicate your brand message.',
-      icon: PenTool,
-      features: [
-        'Logo & Brand Identity',
-        'Print & Digital Media',
-        'Packaging Design',
-        'Marketing Collateral'
-      ]
-    },
-    {
-      title: 'Mobile Apps',
-      description: 'Innovative mobile applications for Android and iOS platforms.',
-      icon: Smartphone,
-      features: [
-        'Native App Development',
-        'Cross-platform Solutions',
-        'UI/UX Design',
-        'App Store Optimization'
-      ]
-    },
-    {
-      title: 'Video Production',
-      description: 'Engaging video content that tells your brand story.',
-      icon: Film,
-      features: [
-        'Commercial Production',
-        'Explainer Videos',
-        'Motion Graphics',
-        'Social Media Content'
-      ]
-    },
-    {
-      title: 'Brand Strategy',
-      description: 'Comprehensive brand strategies that position you for success.',
-      icon: BarChart3,
-      features: [
-        'Brand Positioning',
-        'Market Research',
-        'Competitive Analysis',
-        'Growth Planning'
-      ]
-    }
-  ];
+export const serviceItems = [
+  {
+    title: "Digital Marketing",
+    description: "Strategic online campaigns that drive traffic, leads and sales.",
+    icon: Megaphone,
+    features: [
+      'SEO & SEM Campaigns',
+      'Social Media Management',
+      'Email Marketing',
+      'PPC Advertising'
+    ]
+  },
+  {
+    title: "Web Development",
+    description: "Custom websites and applications that convert visitors into customers.",
+    icon: Globe,
+    features: [
+      'Responsive Web Design',
+      'E-commerce Solutions',
+      'CMS Development',
+      'Web Applications'
+    ]
+  },
+  {
+    title: "Graphic Design",
+    description: "Visually stunning designs that communicate your brand message.",
+    icon: PenTool,
+    features: [
+      'Logo & Brand Identity',
+      'Print & Digital Media',
+      'Packaging Design',
+      'Marketing Collateral'
+    ]
+  },
+  {
+    title: "Mobile Apps",
+    description: "Innovative mobile applications for Android and iOS platforms.",
+    icon: Smartphone,
+    features: [
+      'Native App Development',
+      'Cross-platform Solutions',
+      'UI/UX Design',
+      'App Store Optimization'
+    ]
+  },
+  {
+    title: "Video Production",
+    description: "Engaging video content that tells your brand story.",
+    icon: Film,
+    features: [
+      'Commercial Production',
+      'Explainer Videos',
+      'Motion Graphics',
+      'Social Media Content'
+    ]
+  },
+  {
+    title: "Brand Strategy",
+    description: "Comprehensive brand strategies that position you for success.",
+    icon: BarChart3,
+    features: [
+      'Brand Positioning',
+      'Market Research',
+      'Competitive Analysis',
+      'Growth Planning'
+    ]
+  },
+  {
+    title: "Influencer Marketing",
+    description: "Connect with top-tier influencers to amplify your brand's reach and authenticity. Our network of carefully curated content creators helps deliver your message to engaged audiences.",
+    icon: Users,
+    features: [
+      "Strategic influencer partnerships",
+      "Content creation and campaign planning",
+      "Performance tracking and analytics",
+      "Authentic brand storytelling"
+    ]
+  }
+];
 
+const Services = () => {
   return (
     <section id="services" className="py-20 relative">
       <div className="absolute inset-0 bg-promo-black z-[-2]"></div>
@@ -89,7 +99,7 @@ const Services = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
-          {services.map((service, index) => (
+          {serviceItems.map((service, index) => (
             <ServiceCard
               key={index}
               title={service.title}

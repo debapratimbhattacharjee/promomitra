@@ -1,14 +1,44 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { useToast } from '@/components/ui/use-toast';
 
 const Contact = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
   const contactInfo = [
     { icon: Mail, title: 'Email Us', info: 'promomitra24@gmail.com', description: 'For general inquiries and information' },
     { icon: Phone, title: 'Call Us', info: '+91 9862683512', description: 'Mon-Fri from 9am to 6pm' },
     { icon: MapPin, title: 'Visit Us', info: 'Agartala,Tripura, India', description: 'By appointment only' },
   ];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!user) {
+      toast({
+        title: "Authentication Required",
+        description: "Please sign in or sign up to send your message",
+      });
+      navigate('/auth');
+      return;
+    }
+
+    toast({
+      title: "Message Sent",
+      description: "We'll get back to you soon!",
+    });
+  };
 
   return (
     <section id="contact" className="py-20 bg-promo-darkgray relative">
@@ -44,7 +74,7 @@ const Contact = () => {
                 Fill out the form below and our team will get back to you within 24 hours.
               </p>
               
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -55,6 +85,8 @@ const Contact = () => {
                       id="name"
                       className="w-full bg-promo-lightgray border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-promo-red text-white"
                       placeholder="John Doe"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
                   </div>
                   <div>
@@ -66,6 +98,8 @@ const Contact = () => {
                       id="email"
                       className="w-full bg-promo-lightgray border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-promo-red text-white"
                       placeholder="johndoe@example.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                   </div>
                 </div>
@@ -79,6 +113,8 @@ const Contact = () => {
                     id="subject"
                     className="w-full bg-promo-lightgray border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-promo-red text-white"
                     placeholder="How can we help you?"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   />
                 </div>
                 
@@ -91,10 +127,12 @@ const Contact = () => {
                     rows={5}
                     className="w-full bg-promo-lightgray border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-promo-red text-white"
                     placeholder="Tell us more about your project..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   ></textarea>
                 </div>
                 
-                <Button className="bg-promo-red hover:bg-promo-red/90 text-white px-6 py-6 w-full sm:w-auto button-glow">
+                <Button type="submit" className="bg-promo-red hover:bg-promo-red/90 text-white px-6 py-6 w-full sm:w-auto button-glow">
                   Send Message <Send className="ml-2 h-4 w-4" />
                 </Button>
               </form>

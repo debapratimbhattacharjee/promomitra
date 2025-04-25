@@ -3,52 +3,17 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider, useAuth } from "@/contexts/AuthContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: false,
-    },
-  },
-});
+// Create a new QueryClient instance
+const queryClient = new QueryClient();
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { session, isLoading } = useAuth();
-
-  if (isLoading) {
-    return <div>Loading...</div>; // Or your custom loading component
-  }
-
-  if (!session) {
-    return <Navigate to="/auth" replace />;
-  }
-
-  return <>{children}</>;
-};
-
-const AuthRoute = ({ children }: { children: React.ReactNode }) => {
-  const { session, isLoading } = useAuth();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (session) {
-    return <Navigate to="/" replace />;
-  }
-
-  return <>{children}</>;
-};
-
-const App = () => {
-  return (
-    // Removed StrictMode to prevent double-mounting in development
+const App = () => (
+  <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <TooltipProvider>
@@ -56,29 +21,16 @@ const App = () => {
           <Sonner />
           <BrowserRouter>
             <Routes>
-              <Route 
-                path="/" 
-                element={
-                  <ProtectedRoute>
-                    <Index />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/auth" 
-                element={
-                  <AuthRoute>
-                    <Auth />
-                  </AuthRoute>
-                } 
-              />
+              <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<Auth />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
     </QueryClientProvider>
-  );
-};
+  </React.StrictMode>
+);
 
 export default App;

@@ -14,10 +14,6 @@ import { Button } from '@/components/ui/button';
 
 const About = () => {
   const stats = [
-    { value: '150+', label: 'Projects Completed' },
-    { value: '98%', label: 'Client Satisfaction' },
-    { value: '15+', label: 'Industry Awards' },
-    { value: '10+', label: 'Years Experience' },
   ];
 
   const values = [
@@ -45,8 +41,7 @@ const About = () => {
             </h2>
             
             <p className="text-muted-foreground mb-6">
-              Promo Mitra is a full-service marketing agency that specializes in helping businesses grow through strategic marketing solutions. Founded in 2013, we've helped over 150 brands achieve their marketing goals and establish a strong online presence.
-            </p>
+            Promo Mitra is a full-service marketing agency helping businesses grow with smart, result-driven marketing. Since 2024, we’ve supported brands in building a solid online presence and reaching their audience effectively.</p>
             
             <div className="space-y-4 mb-8">
               {[

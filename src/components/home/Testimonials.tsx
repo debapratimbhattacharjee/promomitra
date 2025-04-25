@@ -8,14 +8,14 @@ const Testimonials = () => {
     {
       quote: "Working with Promo Mitra transformed our brand presence. Their strategic approach to digital marketing helped us increase our online visibility and customer engagement significantly.",
       author: "Mukesh",
-      role: "Bussiness Developer",
+      role: "Owner",
       company: "Invesment Duniya",
       rating: 5
     },
     {
       quote: "The website they designed for us not only looks stunning but has dramatically improved our conversion rates. Their team was responsive, professional, and delivered beyond our expectations.",
-      author: "suranjan Debbarma",
-      role: "CEO",
+      author: "suranjan",
+      role: "MD",
       company: "chakraborty clinic",
       rating: 5
     },
@@ -58,7 +58,7 @@ const Testimonials = () => {
         <div className="mt-16 text-center">
           <div className="glass-card inline-block rounded-full px-6 py-3 mx-auto">
             <p className="text-sm text-muted-foreground">
-              Join over <span className="text-white font-bold">150+ satisfied clients</span> who trust Promo Mitra with their marketing needs
+            Trusted by  <span className="text-white font-bold">businesses</span> who rely on Promo Mitra to elevate their marketing game
             </p>
           </div>
         </div>
