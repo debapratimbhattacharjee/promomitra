@@ -46,6 +46,12 @@ const Hero = () => {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  const scrollToPortfolio = () => {
+    const portfolioSection = document.getElementById('portfolio');
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="min-h-screen relative flex items-center pt-20 pb-20 overflow-hidden">
@@ -82,10 +88,15 @@ const Hero = () => {
               >
                 Contact Us <ChevronRight className="ml-1 h-4 w-4" />
               </Button>
-              <Button variant="outline" className="border-white/20 hover:bg-white/5 text-white py-6 px-8 rounded-lg">
-                Our Portfolio
-              </Button>
-            </div>
+              <Button
+              variant="outline"
+              className="border-white/20 hover:bg-white/5 text-white py-6 px-8 rounded-lg"
+              onClick={scrollToPortfolio}
+            >
+              Our Portfolio
+            </Button>
+          </div>
+
 
             <div className="pt-6 border-t border-white/10">
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
